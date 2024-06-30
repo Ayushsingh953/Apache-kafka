@@ -1,4 +1,4 @@
-# Basic KAFKA Commands
+# KAFKA Commands
 
 **Note:** Run all the commands in kafka directory.
 
