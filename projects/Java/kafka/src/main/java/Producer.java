@@ -10,14 +10,14 @@ public class Producer {
         props.put("key.serializer","org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer","org.apache.kafka.common.serialization.StringSerializer");
 
-        KafkaProducer<String,String> producer = new KafkaProducer<>(props);
-
-        int numRecords = 100;
-        for (int i = 0; i < numRecords; i++) {
-            System.out.println("Sending record " + i);
-            producer.send(new ProducerRecord<>("numbers",Integer.toString(i),Integer.toString(i)));
+        try (KafkaProducer<String, String> producer = new KafkaProducer<>(props)) {
+            int numRecords = 100;
+            for (int i = 0; i < numRecords; i++) {
+                System.out.println("Sending record " + i);
+                producer.send(new ProducerRecord<>("numbers", Integer.toString(i), Integer.toString(i)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        producer.close();
     }
 }
