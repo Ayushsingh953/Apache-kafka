@@ -2,11 +2,12 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Properties;
 
-public class Consumer {
-    public static void main(String[] args) {
+public class ConsumerWithAutoCommit {
+    public static void main(String[] args)throws IOException {
         Properties props = new Properties();
         props.put("bootstrap.servers","172.25.238.254:9092, 172.25.238.254:9093, 172.25.238.254:9094");
         props.put("group.id","first-group");
@@ -17,7 +18,7 @@ public class Consumer {
 
         String[] topics = new String[]{"numbers"};
 
-        try( KafkaConsumer<String,String> consumer = new KafkaConsumer<>(props);){
+        try( KafkaConsumer<String,String> consumer = new KafkaConsumer<>(props)){
             consumer.subscribe(Arrays.asList(topics));
             while(true){
                 ConsumerRecords<String, String> records = consumer.poll(100);
