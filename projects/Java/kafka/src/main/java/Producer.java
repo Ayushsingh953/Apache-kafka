@@ -20,7 +20,7 @@ public class Producer {
                 String message = String.format("Producer %s has sent message %s at %s.", clientId, i, new Date());
                 System.out.println(message);
                 producer.send(new ProducerRecord<>("numbers", Integer.toString(i), message));
-                Thread.sleep(300);
+//                Thread.sleep(300);
             }
         } catch (Exception e) {
             e.printStackTrace();
