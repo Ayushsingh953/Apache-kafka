@@ -12,7 +12,7 @@ public class ConsumerWithManualCommit {
     public static void main(String[] args)throws IOException {
         Properties props = new Properties();
         props.put("bootstrap.servers","172.25.238.254:9092, 172.25.238.254:9093, 172.25.238.254:9094");
-        props.put("group.id","first-group");
+        props.put("group.id","second-group");
         props.put("key.deserializer","org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer","org.apache.kafka.common.serialization.StringDeserializer");
 
