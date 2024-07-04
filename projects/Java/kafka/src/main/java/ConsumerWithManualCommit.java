@@ -16,7 +16,8 @@ public class ConsumerWithManualCommit {
         props.put("key.deserializer","org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer","org.apache.kafka.common.serialization.StringDeserializer");
 
-        try(KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);FileWriter fileWriter = new FileWriter("numbers.txt",true)) {
+        try(KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
+            FileWriter fileWriter = new FileWriter("numbers.txt",true)) {
             String[] topics = new String[]{"numbers"};
             consumer.subscribe(Arrays.asList(topics));
 

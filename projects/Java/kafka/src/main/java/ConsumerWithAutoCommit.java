@@ -16,9 +16,9 @@ public class ConsumerWithAutoCommit {
         props.put("enable.auto.commit", "true");
         props.put("auto.commit.interval.ms", "1000");
 
-        String[] topics = new String[]{"numbers"};
 
         try( KafkaConsumer<String,String> consumer = new KafkaConsumer<>(props)){
+            String[] topics = new String[]{"numbers"};
             consumer.subscribe(Arrays.asList(topics));
             while(true){
                 ConsumerRecords<String, String> records = consumer.poll(100);
